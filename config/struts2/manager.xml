@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="manager" namespace="/manager" extends="struts-default">
+		<action name="manager_*" method="{1}" class="com.eca.action.manager.ManagerAction">
+			<result name="intoMain">/WEB-INF/view/manager/manager.jsp</result>
+		</action>
+	</package>
+</struts>

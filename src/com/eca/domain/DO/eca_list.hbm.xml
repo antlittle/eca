@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-19 9:55:19 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.eca.domain.DO.eca_list" table="ECA_LIST">
+        <id name="eca_list_id" type="java.lang.String">
+            <column name="ECA_LIST_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="list_license_plate" type="java.lang.String">
+            <column name="LIST_LICENSE_PLATE" />
+        </property>
+        <property name="list_rfid" type="java.lang.String">
+            <column name="LIST_RFID" />
+        </property>
+        <property name="list_name" type="java.lang.String">
+            <column name="LIST_NAME" />
+        </property>
+        <property name="list_method" type="java.lang.String">
+            <column name="LIST_METHOD" />
+        </property>
+        <property name="list_real_price" type="java.lang.String">
+            <column name="LIST_REAL_PRICE" />
+        </property>
+        <property name="list_telephone" type="java.lang.String">
+            <column name="LIST_TELEPHONE" />
+        </property>
+        <property name="list_id_number" type="java.lang.String">
+            <column name="LIST_ID_NUMBER" />
+        </property>
+        <property name="list_shop" type="java.lang.String">
+            <column name="LIST_SHOP" />
+        </property>
+        <property name="list_date" type="java.lang.String">
+            <column name="LIST_DATE" />
+        </property>
+        <property name="list_kind" type="java.lang.String">
+            <column name="LIST_KIND" />
+        </property>
+        <property name="list_street" type="java.lang.String">
+            <column name="LIST_STREET" />
+        </property>
+        <property name="list_community" type="java.lang.String">
+            <column name="LIST_COMMUNITY" />
+        </property>
+        <property name="list_pay" type="java.lang.String">
+            <column name="LIST_PAY" />
+        </property>
+        <property name="list_number" type="java.lang.String">
+            <column name="LIST_NUMBER" />
+        </property>
+        <property name="list_recharge" type="java.lang.String">
+            <column name="LIST_RECHARGE" />
+        </property>
+        <property name="list_price" type="java.lang.String">
+            <column name="LIST_PRICE" />
+        </property>
+        <property name="list_remark" type="java.lang.String">
+            <column name="LIST_REMARK" />
+        </property>
+        <property name="list_gmt_create" type="java.lang.String">
+            <column name="LIST_GMT_CREATE" />
+        </property>
+        <property name="list_gmt_modified" type="java.lang.String">
+            <column name="LIST_GMT_MODIFIED" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-4-17 14:07:50 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.eca.domain.DO.eca_staff" table="ECA_STAFF">
+		<id name="staff_id" type="java.lang.String">
+			<column name="STAFF_ID" />
+			<generator class="assigned" />
+		</id>
+		<property name="staff_name" type="java.lang.String">
+			<column name="STAFF_NAME" />
+		</property>	
+		<property name="staff_sex" type="java.lang.String">
+			<column name="STAFF_SEX" />
+		</property>	
+		<property name="staff_eduBackground" type="java.lang.String">
+			<column name="STAFF_EDUBACKGROUND" />
+		</property>	
+		<property name="staff_birthday" type="java.lang.String">
+			<column name="STAFF_BIRTHDAY" />
+		</property>	
+		<property name="staff_status" type="java.lang.String">
+			<column name="STAFF_STATUS" />
+		</property>	
+		<property name="staff_phone" type="java.lang.String">
+			<column name="STAFF_PHONE" />
+		</property>	
+		<property name="staff_department" type="java.lang.String">
+			<column name="STAFF_DEPARTMENT" />
+		</property>	
+		<property name="staff_address" type="java.lang.String">
+			<column name="STAFF_ADDRESS" />
+		</property>	
+		<property name="staff_gmt_create" type="java.lang.String">
+            <column name="STAFF_GMT_CREATE" />
+        </property>
+        <property name="staff_gmt_modified" type="java.lang.String">
+            <column name="STAFF_GMT_MODIFIED" />
+        </property>
+	</class>	
+</hibernate-mapping>
