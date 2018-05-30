@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.eca.domain.DO.eca_staff;
+import com.eca.domain.VO.staffListVO;
 import com.eca.service.employee.StaffService;
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class StaffAction extends ActionSupport {
 	private String staff_id;
 	private StaffService staffService;
 	private eca_staff staff;
+	private staffListVO staffVO;
 
 	// -----------------------------------进入人员管理---------------------------------------//
 	public String page_staffList() {
@@ -44,6 +47,24 @@ public class StaffAction extends ActionSupport {
 		}
 
 	}
+
+	// -------------------------------------显示员工信息分页-------------------------------------//
+	public void getStaffsByPage() {
+		staffService.getStaffsByPage(staffVO);
+		Gson gson = new Gson();
+		String result = gson.toJson(staffVO);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charSet=utf-8");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	// ------------------------------------getter/setter--------------------------------//
 
 	public String getStaff_id() {
@@ -68,6 +89,14 @@ public class StaffAction extends ActionSupport {
 
 	public void setStaff(eca_staff staff) {
 		this.staff = staff;
+	}
+
+	public staffListVO getStaffVO() {
+		return staffVO;
+	}
+
+	public void setStaffVO(staffListVO staffVO) {
+		this.staffVO = staffVO;
 	}
 
 }

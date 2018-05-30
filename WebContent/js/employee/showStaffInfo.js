@@ -7,10 +7,10 @@ var queryConditionTemp = {
 	"totalPage" : "",
 	"pageCount" : "10",
 	"totalCount" : "",
-	"inPoliceTimeSort" : "desc",
-	"policemanName" : "",
-	"policemanSex" : "",
-	"politicalStatus" : ""
+	"staffJoinTime" : "desc",
+	"staffName" : "",
+	"staffSex" : "",
+	"staffStatus" : ""
 }
 window.onload = function() {
 	allPageVue = new Vue({
@@ -20,30 +20,30 @@ window.onload = function() {
 			totalPage : '',
 			pageCount : '10',
 			totalCount : '',
-			policemans : ''
+			staffs : ''
 		}
 	});
 	loadData();
 }
 
 var changeSort = function(event) {
-	queryConditionTemp.inPoliceTimeSort = event.value;
+	queryConditionTemp.staffJoinTime = event.value;
 	queryConditionTemp.currPage = "1";
 	loadData();
 }
 
 var changeStatus = function(event) {
-	queryConditionTemp.politicalStatus = event.value;
+	queryConditionTemp.staffStatus = event.value;
 	queryConditionTemp.currPage = "1";
 	loadData();
 }
 var changeSex = function(event) {
-	queryConditionTemp.policemanSex = event.value;
+	queryConditionTemp.staffSex = event.value;
 	queryConditionTemp.currPage = "1";
 	loadData();
 }
 var changeName = function(event) {
-	queryConditionTemp.policemanName = event.value;
+	queryConditionTemp.staffName = event.value;
 	queryConditionTemp.currPage = "1";
 	loadData();
 }
@@ -200,23 +200,25 @@ var skipToDetails = function(event) {
 var loadData = function() {
 	$('#mainPanel').hide();
 	$('#loadingLayer').show();
+	alert(queryConditionTemp.staffStatus);
 	var queryCondition = {
-		"policemanVO.currPage" : queryConditionTemp.currPage,
-		"policemanVO.totalPage" : queryConditionTemp.totalPage,
-		"policemanVO.pageCount" : queryConditionTemp.pageCount,
-		"policemanVO.totalCount" : queryConditionTemp.totalCount,
-		"policemanVO.inPoliceTimeSort" : queryConditionTemp.inPoliceTimeSort,
-		"policemanVO.policemanName" : queryConditionTemp.policemanName,
-		"policemanVO.policemanSex" : queryConditionTemp.policemanSex,
-		"policemanVO.politicalStatus" : queryConditionTemp.politicalStatus,
+		"staffVO.currPage" : queryConditionTemp.currPage,
+		"staffVO.totalPage" : queryConditionTemp.totalPage,
+		"staffVO.pageCount" : queryConditionTemp.pageCount,
+		"staffVO.totalCount" : queryConditionTemp.totalCount,
+		"staffVO.staffJoinTime" : queryConditionTemp.staffJoinTime,
+		"staffVO.staffName" : queryConditionTemp.staffName,
+		"staffVO.staffSex" : queryConditionTemp.staffSex,
+		"staffVO.staffStatus" : queryConditionTemp.staffStatus,
 	}
 	$.ajax({
-		url : '/xsjsglxt/team/Staff_getPolicemansByPage',
+		url : '/eca/staff/staff_getStaffsByPage',
 		type : 'POST',
 		data : queryCondition,
 		success : function(data) {
+			alert(data);
 			var result = JSON.parse(data);
-			allPageVue.policemans = result.policemans;
+			allPageVue.staffs = result.staffs;
 			allPageVue.currPage = result.currPage;
 			allPageVue.totalPage = result.totalPage;
 			allPageVue.pageCount = result.pageCount;
@@ -225,10 +227,10 @@ var loadData = function() {
 			queryConditionTemp.totalPage = result.totalPage;
 			queryConditionTemp.pageCount = result.pageCount;
 			queryConditionTemp.totalCount = result.totalCount;
-			queryConditionTemp.inPoliceTimeSort = result.inPoliceTimeSort;
-			queryConditionTemp.policemanName = result.policemanName;
-			queryConditionTemp.policemanSex = result.policemanSex;
-			queryConditionTemp.politicalStatus = result.politicalStatus;
+			queryConditionTemp.staffJoinTime = result.staffJoinTime;
+			queryConditionTemp.staffName = result.staffName;
+			queryConditionTemp.staffSex = result.staffSex;
+			queryConditionTemp.staffStatus = result.staffStatus;
 			$('#loadingLayer').hide();
 			$('#mainPanel').show();
 		}

@@ -41,68 +41,67 @@
 				</div>
 				<div class="col-md-12">
 				<div id="loadingLayer"  style="margin: 0 auto; width: 45px;"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>
-<!-- 					<div class="panel" id="mainPanel" style="display: none;"> -->
-<!-- 						<div class="panel-heading"> -->
-<!-- 							<h3 class="panel-title staff_title">人员列表</h3> -->
-<!-- 						</div> -->
-<!-- 						<div class="panel-body"> -->
-<!-- 							<table class="table table-hover table-condensed staff_table_info"> -->
-<!-- 								<thead> -->
-<!-- 									<tr> -->
-<!-- 										<th>姓名</th> -->
-<%-- 										<th><select id="xsjsglxt_sex" onchange="changeSex(this)" class="form-control"> --%>
-<!-- 											<option value="">性别</option> -->
-<!-- 											<option value="男">男</option> -->
-<!-- 											<option value="女">女</option> -->
-<%-- 										</select> --%>
-<!-- 										</th> -->
-<!-- 										<th>年龄</th> -->
-<%-- 										<th><select id="staff_politicalStatus" onchange="changeStatus(this)" class="form-control"> --%>
-<!-- 											<option value="">政治面貌</option> -->
-<!-- 											<option value="群众">群众</option> -->
-<!-- 											<option value="入党积极分子">入党积极分子</option> -->
-<!-- 											<option value="预备党员">预备党员</option> -->
-<!-- 											<option value="党员">党员</option> -->
-<%-- 										</select></th> --%>
-<%-- 										<th><select id="staff_thePoliceTime" onchange="changeSort(this)" class="form-control"> --%>
-<!-- 											<option value="desc">入警时间（降序）</option> -->
-<!-- 											<option value="asc">入警时间（升序）</option> -->
-<%-- 										</select> </th> --%>
-<!-- 										<th>操作</th> -->
-<!-- 									</tr> -->
-<!-- 								</thead> -->
-<!-- 								<tbody> -->
-<!-- 									<tr v-for="policeman in policemans" style="text-align: center;"> -->
-<%-- 										<td><a :id="policeman.xsjsglxt_staff_id" onclick="skipToDetails(this)"><span v-html="policeman.xsjsglxt_name"></span></a></td> --%>
-<!-- 										<td>{{ policeman.xsjsglxt_sex }}</td> -->
-<!-- 										<td>{{ policeman.xsjsglxt_age }}</td> -->
-<!-- 										<td>{{ policeman.staff_politicalStatus }}</td> -->
-<!-- 										<td>{{ policeman.staff_thePoliceTime }}</td> -->
-<!-- 										<td><button  onclick="createConfirm_relive(this)" :id="policeman.xsjsglxt_staff_id" class="btn btn-success">修改</button> -->
-<!-- 										<button  onclick="createConfirm(this)" :id="policeman.xsjsglxt_staff_id" class="btn btn-danger">删除</button></td> -->
-<!-- 									</tr> -->
-<!-- 								</tbody> -->
-<!-- 							</table> -->
-<!-- 							<div class="page-footer"> -->
-<!-- 								<div class="page_info"> -->
-<!-- 									&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="firstPage()"><i -->
-<!-- 										class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 									<a onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 									<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 									<a onclick="endPage()">尾页<i -->
-<!-- 										class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 									<input type="text" class="page-go" id="jumpInput"/>&nbsp;&nbsp;&nbsp;&nbsp; -->
-<!-- 									 <a onclick="jumpPage()">GO</a></div> -->
-<!-- 								<div style="width: 100px;height: 100px; margin: 0 auto;"> -->
-<%-- 									<span>当前第{{ currPage }}页</span><br> --%>
-<%-- 									<span>共{{ totalPage }}页</span><br> --%>
-<%-- 									<span>共{{ totalCount }}条记录</span><br> --%>
-<!-- 								</div> -->
-<!-- 								<p class='page-infomation'></p> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						END TABLE HOVER -->
-<!-- 					</div> -->
+					<div class="panel" id="mainPanel" style="display: none;">
+						<div class="panel-heading">
+							<h3 class="panel-title staff_title">人员列表</h3>
+						</div>
+						<div class="panel-body">
+							<table class="table table-hover table-condensed staff_table_info">
+								<thead>
+									<tr>
+										<th>姓名</th>
+										<th><select id="staff_sex" onchange="changeSex(this)" class="form-control">
+											<option value="">性别</option>
+											<option value="男">男</option>
+											<option value="女">女</option>
+										</select>
+										</th>
+										<th>出生年月</th>
+										<th><select id="staff_status" onchange="changeStatus(this)" class="form-control">
+											<option value="">职位</option>
+											<option value="总经理">总经理</option>
+											<option value="部门经理">部门经理</option>
+											<option value="部门主管">部门主管</option>
+											<option value="职员">职员</option>
+										</select></th>
+										<th><select id="staff_gmt_create" onchange="changeSort(this)" class="form-control">
+											<option value="desc">入职时间（降序）</option>
+											<option value="asc">入职时间（升序）</option>
+										</select> </th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="staff in staffs" style="text-align: center;">
+										<td><a :id="staff.staff_id" onclick="skipToDetails(this)"><span v-html="staff.staff_name"></span></a></td>
+										<td>{{ staff.staff_sex }}</td>
+										<td>{{ staff.staff_birthday }}</td>
+										<td>{{ staff.staff_status }}</td>
+										<td>{{ staff.staff_gmt_create}}</td>
+										<td><button  onclick="createConfirm_relive(this)" :id="staff.staff_id" class="btn btn-success">修改</button>
+										<button  onclick="createConfirm(this)" :id="staff.staff_id" class="btn btn-danger">删除</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="page-footer">
+								<div class="page_info">
+									&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="firstPage()"><i
+										class="fa fa-angle-double-left">首页</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a onclick="prePage()"><i class="fa fa-angle-left"></i>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a onclick="nextPage()">下一页<i class="fa fa-angle-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a onclick="endPage()">尾页<i
+										class="fa fa-angle-double-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="text" class="page-go" id="jumpInput"/>&nbsp;&nbsp;&nbsp;&nbsp;
+									 <a onclick="jumpPage()">GO</a></div>
+								<div style="width: 100px;height: 100px; margin: 0 auto;">
+									<span>当前第{{ currPage }}页</span><br>
+									<span>共{{ totalPage }}页</span><br>
+									<span>共{{ totalCount }}条记录</span><br>
+								</div>
+								<p class='page-infomation'></p>
+							</div>
+						</div>
+					</div>
 
 				</div>
 			</div>
