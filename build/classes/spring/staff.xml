@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+<!-- action -->	
+	<bean id="staffAction" class="com.eca.action.employee.StaffAction" 
+	scope="prototype">
+		<property name="staffService" ref="staffService"></property>
+	</bean>
+<!-- service -->	
+    <bean id="staffService" class="com.eca.service.impl.employee.StaffServiceImpl">
+		<property name="staffDao" ref="staffDao"></property>
+	</bean>
+<!-- dao -->
+	<bean id="staffDao" class="com.eca.dao.impl.employee.StaffDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

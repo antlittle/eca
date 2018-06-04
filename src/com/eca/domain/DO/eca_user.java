@@ -12,6 +12,8 @@ public class eca_user {
 	private String user_gmt_create; // 创建时间
 	private String user_gmt_modified; // 修改时间
 
+	// -------------------------------------getter/setter--------------------------------------//
+
 	public String getEca_user_id() {
 		return eca_user_id;
 	}

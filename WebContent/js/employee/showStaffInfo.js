@@ -104,7 +104,7 @@ var createConfirm = function(event) {
 				btnClass : 'btn-blue',
 				action : function() {
 					deletePoliceman(event);
-					loadData();
+					location.reload();
 				}
 			},
 			closeAction : {
@@ -122,75 +122,19 @@ function  createConfirm_relive(event) {
 	enterRelivePage(event);
 }
 function enterRelivePage(event){
-	window.location = "/xsjsglxt/team/Staff_intoUpdate?xsjsglxt_staff_id="
+	window.location = "/eca/staff/staff_intoUpdate?staff_staff_id="
 		+ event.id;
 }
 var deletePoliceman = function(event) {
-	// 此处调用九个接口
 	// 删除警员基本信息
 	$.ajax({
-		url : '/xsjsglxt/team/Staff_deletePoliceman',
+		url : '/eca/staff/staff_deleteStaff',
 		type : 'POST',
 		data : {
-			'policeman.xsjsglxt_staff_id' : event.id
+			'staff.staff_id' : event.id
 		}
 	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffFamily_deleteFamilyByStaffId',
-		type : 'POST',
-		data : {
-			'family.staffFamily_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffFurlough_deleteFurloughByStaffId',
-		type : 'POST',
-		data : {
-			'furlough.staffFurlough_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffMove_deleteMoves',
-		type : 'POST',
-		data : {
-			'move.staffMove_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffPrinciple_deletePrinciples',
-		type : 'POST',
-		data : {
-			'principle.staffPrinciple_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffPunishment_deletePunishments',
-		type : 'POST',
-		data : {
-			'punishment.staffPunishment_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffReward_deleteRewards',
-		type : 'POST',
-		data : {
-			'reward.staffReward_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffStudent_deleteStudents',
-		type : 'POST',
-		data : {
-			'student.staffStudent_staff' : event.id
-		}
-	});
-	$.ajax({
-		url : '/xsjsglxt/team/StaffWork_deleteWorks',
-		type : 'POST',
-		data : {
-			'work.staffWork_staff' : event.id
-		}
-	});
+	toastr.success("已删除！");
 }
 var skipToDetails = function(event) {
 	window.location = "/xsjsglxt/team/Staff_page_staffDetails?xsjsglxt_staff_id="
@@ -200,7 +144,6 @@ var skipToDetails = function(event) {
 var loadData = function() {
 	$('#mainPanel').hide();
 	$('#loadingLayer').show();
-	alert(queryConditionTemp.staffStatus);
 	var queryCondition = {
 		"staffVO.currPage" : queryConditionTemp.currPage,
 		"staffVO.totalPage" : queryConditionTemp.totalPage,
@@ -216,7 +159,6 @@ var loadData = function() {
 		type : 'POST',
 		data : queryCondition,
 		success : function(data) {
-			alert(data);
 			var result = JSON.parse(data);
 			allPageVue.staffs = result.staffs;
 			allPageVue.currPage = result.currPage;

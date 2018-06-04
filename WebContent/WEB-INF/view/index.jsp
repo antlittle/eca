@@ -48,7 +48,7 @@
 							<li><a href="#href"><span>部门管理</span></a></li>
 					
 	
-							<li><a href="#href"><span>企业公告</span></a></li>
+							<li><a href="#href"><span>班次管理</span></a></li>
 
 						</ul></li>
 				</ul>

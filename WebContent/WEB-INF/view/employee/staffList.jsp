@@ -32,12 +32,12 @@
 			</div>
 			<div class="panel-body">
 				<div class="operation" style="margin: 0 0 6px 50px;">
-					<button style="margin-left: 15px;" type="button"
+					<input type="text" id="searchInput" class="form-control" style="width: 220px; display: inline-block; float:right; position:relative ; right:15px;" oninput="changeName(this)" placeholder="请输入搜索内容">
+					<a style="margin-left: 820px;" type="button"
 						class="btn btn-default"
-						onclick="javascript:location.href='/eca/staff/staff_page_addStaff'">
+						href="<%=basePath%>staff/staff_page_addStaff">
 						<i class="fa fa-plus-square"></i> 添加人员
-					</button>
-					<input type="text" id="searchInput" class="form-control" style="width: 250px; display: inline-block; float: right;" oninput="changeName(this)" placeholder="请输入搜索内容">
+					</a>
 				</div>
 				<div class="col-md-12">
 				<div id="loadingLayer"  style="margin: 0 auto; width: 45px;"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>
@@ -78,7 +78,7 @@
 										<td>{{ staff.staff_birthday }}</td>
 										<td>{{ staff.staff_status }}</td>
 										<td>{{ staff.staff_gmt_create}}</td>
-										<td><button  onclick="createConfirm_relive(this)" :id="staff.staff_id" class="btn btn-success">修改</button>
+										<td><button  onclick="createConfirm_relive(this)" :id="staff.staff_id" class="btn btn-primary">修改</button>
 										<button  onclick="createConfirm(this)" :id="staff.staff_id" class="btn btn-danger">删除</button></td>
 									</tr>
 								</tbody>

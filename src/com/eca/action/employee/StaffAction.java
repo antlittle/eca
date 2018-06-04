@@ -28,17 +28,75 @@ public class StaffAction extends ActionSupport {
 		return "AddStaff";
 	}
 
+	public String intoUpdate() {
+		return "intoUpdate";
+	}
+
 	// -----------------------------------添加员工---------------------------------------//
 	public void saveStaff() {
-		System.out.println(staff);
 		String result = staffService.saveStaff(staff);
-		System.out.println("fadsfadsfasdf");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw;
 		try {
 			pw = response.getWriter();
 			pw.write(staff.getStaff_id());
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// 修改员工
+	public void updateStaff() {
+		System.out.println(staff);
+		eca_staff oldStaff = staffService.getStaffByStaffId(staff.getStaff_id());
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charSet=utf-8");
+		staff.setStaff_gmt_create(oldStaff.getStaff_gmt_create());
+		String result = staffService.updateStaff(staff);
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// 根据ID获得员工
+	public void getStaffByStaffId() {
+		eca_staff thisStaff = staffService.getStaffByStaffId(staff.getStaff_id());
+		Gson gson = new Gson();
+		String result = gson.toJson(thisStaff);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charSet=utf-8");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// 删除员工
+	public void deleteStaff() {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charSet=utf-8");
+		String result = staffService.deleteStaff(staff);
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(result);
 			pw.flush();
 			pw.close();
 		} catch (IOException e) {

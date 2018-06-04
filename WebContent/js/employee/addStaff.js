@@ -20,7 +20,7 @@ function staff_change() {
 							var birthday = document
 									.getElementsByName("staff.staff_birthday")[0].value;
 							if (department == "" || name == "" || birthday == "") {
-								toastr.error('姓名、警号、入警时间或身份证号不能为空哦！');
+								toastr.error('姓名、部门、或者生日不能为空哦！');
 								return false;
 							}
 							loadstaffDetail_staff_change(url);
@@ -33,7 +33,7 @@ function staff_change() {
 }
 // 警员基本信息表
 function loadstaffDetail_staff_change(url) {
-	console.log("b2");
+
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	} else {
@@ -42,18 +42,19 @@ function loadstaffDetail_staff_change(url) {
 	var staffDetails = document.getElementById("staffDetails");
 
 	var formData = new FormData(staffDetails);
+	
+	xmlhttp.open("post", url, true);
+	// xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
+	xmlhttp.send(formData);
 
 	xmlhttp.onreadystatechange = function() {
 		console.log("c2");
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			console.log(xmlhttp.responseText);
 			var id = xmlhttp.responseText;
-			alert(id);
 			toastr.success("新建人员成功");
-//			window.location.href = '/xsjsglxt/team/Staff_page_newStaff';
+			window.location.href = '/eca/staff/staff_page_staffList';
 		}
 	};
-	xmlhttp.open("post", url, true);
-	// xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
-	xmlhttp.send(formData);
+
 }

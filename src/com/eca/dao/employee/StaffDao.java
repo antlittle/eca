@@ -15,4 +15,13 @@ public interface StaffDao {
 
 	// 得到员工总数
 	int getStaffsCount(staffListVO staffVO);
+
+	// 修改员工
+	String updateStaff(eca_staff staff);
+
+	// 根据ID获得
+	eca_staff getStaffByStaffId(String staff_id);
+
+	// 删除员工
+	String deleteStaff(eca_staff staff);
 }

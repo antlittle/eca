@@ -94,4 +94,28 @@ public class StaffDaoImpl implements StaffDao {
 		return (int) count;
 	}
 
+	// 根据ID获得员工
+	public eca_staff getStaffByStaffId(String staff_id) {
+		Session session = this.getSession();
+		return (eca_staff) session.get(eca_staff.class, staff_id);
+	}
+
+	// 修改员工信息
+	@Override
+	public String updateStaff(eca_staff staff) {
+		// TODO Auto-generated method stub
+		Session session = this.getSession();
+		session.saveOrUpdate(staff);
+		return UPDATE;
+	}
+
+	// 删除员工
+	@Override
+	public String deleteStaff(eca_staff staff) {
+		// TODO Auto-generated method stub
+		Session session = this.getSession();
+		session.delete(staff);
+		return DELETE;
+	}
+
 }

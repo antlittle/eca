@@ -40,31 +40,31 @@
 				<div style="width: 1000px; margin: 0 auto;">
 					<form id="staffDetails" enctype="multipart/form-data"
 						accept-charset="utf-8">
-						<table  class="table table-bordered" style="width: 100%;">
+						<table  class="table table-bordered " style="width: 100%;">
 							<tr>
-								<td colspan="6" class="staff_info_title"><span class="glyphicon glyphicon-tags">&nbsp;</span><B>基本信息:</B></td>
+								<td colspan="6" class="staff_info_title info">基本信息</td>
 							</tr>
+							<tr style="height: 20px"></tr>
 							<tr>
 								<td><label class="staff_info_label">姓名</label></td>
 								<td><input name="staff.staff_name"
 									class="form-control" type="text"></td>
-								<td><label class="staff_info_label">性别</label></td>
+								<td><label class="staff_info_label">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</label></td>
 								<td><label style="float: left; width: 50px;"
 									class="fancy-radio person_radio"> <input
-										name="staff.staff_sex" type="radio" value="男">
-										<span> <i></i>男
-									</span>
+										name="sex_content"  onclick=changeSex_man(this) type="radio" value="男">
+										<span> <i></i>男</span>
 								</label> <label style="float: left; width: 50px; margin-left: 10px;"
 									class="fancy-radio "> <input
-										name="staff.staff_sex" type="radio" value="女">
+										name="sex_content" onclick=changeSex_woman(this) type="radio" value="女">
 										<span><i></i>女</span>
-								</label></td>
+								</label><input type="hidden" name="staff.staff_sex" id="sex"></td>
 							</tr>
 							<tr>
 
 								<td><label class="staff_info_label">最高学历</label></td>
 								<td><select class="form-control"
-									name="staff.staff_eduBackground">
+									name="staff.staff_eduBackground" id="staff_eduBackground">
 										<option></option>
 										<option>高中</option>
 										<option>专科</option>
@@ -74,7 +74,7 @@
 								</select></td>
 								<td><label class="staff_info_label">职位</label></td>
 								<td><select class="form-control"
-									name="staff.staff_status">
+									name="staff.staff_status" id="staff_status">
 										<option></option>
 										<option>总经理</option>
 										<option>部门经理</option>
@@ -87,8 +87,7 @@
 							<tr>
 							<td><label class="staff_info_label">部门</label></td>
 								<td><select class="form-control"
-									name="staff.staff_department"
-									onchange="checkUp(this.value)">
+									name="staff.staff_department" id="staff_department">
 										<option></option>
 										<option>销售部</option>
 										<option>业务部</option>
@@ -98,13 +97,12 @@
 								</select></td>
 								<td><label class="staff_info_label">生日</label></td>
 								<td><input name="staff.staff_birthday"
-									class="form-control staff_birthday" type="text"></td>
+									class="form-control staff_birthday" id = "staff_birthday"type="text"></td>
 							</tr>
-
-							<tr style="height:20px;"></tr>
 							<tr>
-								<td colspan="6" class="staff_info_title"><span class="glyphicon glyphicon-tags">&nbsp;</span><B>联系方法:</B></td>
+								<td colspan="6" class="staff_info_title info">联系方法</td>
 							</tr>
+							<tr style="height: 20px;"></tr>
 							<tr>
 								<td><label class="staff_info_label">手机号</label></td>
 								<td><input name="staff.staff_phone"
@@ -119,17 +117,17 @@
 						</table>
 						<br>
 								<button style="float: right;" type="button"
-								class="btn btn-default button" onclick="staff_change()">
+								class="btn btn-default button" onclick="staff_relive()">
 								<i class="fa fa-pencil"></i> 保存
 								</button>
 					</form>
 				</div>
-				
 			</div>
 		</div>
 	</div>
 	
 	<script type="text/javascript" src="<%=basePath%>js/employee/addStaff.js"></script>
+	<script type="text/javascript"src="<%=basePath%>js/employee/staffUpdate.js"></script>
 	<script type="text/javascript">
 	$.datetimepicker.setLocale('ch');
 	$('.staff_birthday').datetimepicker({

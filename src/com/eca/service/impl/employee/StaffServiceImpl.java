@@ -44,4 +44,26 @@ public class StaffServiceImpl implements StaffService {
 		staffVO.setStaffs(staffs);
 	}
 
+	// 修改员工
+	@Override
+	public String updateStaff(eca_staff staff) {
+		// TODO Auto-generated method stub
+		staff.setStaff_gmt_modified(TeamUtil.getStringSecond());
+		String result = staffDao.updateStaff(staff);
+		return result;
+	}
+
+	// 根据ID获得员工
+	@Override
+	public eca_staff getStaffByStaffId(String staff_id) {
+		// TODO Auto-generated method stub
+		return staffDao.getStaffByStaffId(staff_id);
+	}
+
+	@Override
+	public String deleteStaff(eca_staff staff) {
+		// TODO Auto-generated method stub
+		return staffDao.deleteStaff(staff);
+	}
+
 }
